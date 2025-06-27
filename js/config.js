@@ -1,2 +1,2 @@
-const API_URL = "https://veterinaria-backend.onrender.com/api";
+const API_URL = "https://jazzy-llama-065dae.netlify.app/";
 
