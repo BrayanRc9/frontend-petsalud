@@ -1,0 +1,287 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #005a87;
+  padding: 10px 20px;
+}
+
+.logo {
+  width: 120px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.banner {
+  position: relative;
+  text-align: center;
+}
+
+.banner img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.banner h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+footer {
+  text-align: center;
+  background-color: #003f5c;
+  color: white;
+  padding: 20px 10px;
+  margin-top: 10px;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+  background-color: #fff;
+}
+
+.form-box {
+  background-color: #e8f0fe;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 320px;
+  margin: 10px;
+}
+
+.form-box h2 {
+  text-align: center;
+  color: #005a87;
+}
+
+.form-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-box input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-box button {
+  background-color: #005a87;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-box button:hover {
+  background-color: #00456c;
+}
+
+.user-dashboard {
+  padding: 20px;
+  display: grid;
+  gap: 30px;
+  background-color: #fff;
+}
+
+.user-dashboard section {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.card {
+  background-color: #e0ecff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.historial ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.historial li a {
+  color: #005a87;
+  text-decoration: none;
+}
+
+.historial li a:hover {
+  text-decoration: underline;
+}
+
+.citas form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-dashboard {
+  padding: 20px;
+  display: grid;
+  gap: 30px;
+  background-color: #fff;
+}
+
+.admin-dashboard section {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.admin-dashboard form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#lista-insumos {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+.contacto {
+  padding: 20px;
+  background-color: #fff;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contacto h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#contacto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contacto-form input,
+#contacto-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+#contacto-form button {
+  background-color: #005a87;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#contacto-form button:hover {
+  background-color: #00456c;
+}
+
+.nav-links button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.usuarios, .servicios, .pacientes, .citas, .mis-mascotas {
+  padding: 20px;
+  background-color: #fff;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.usuarios form,
+.citas form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.usuarios input, .usuarios select,
+.citas input, .citas button,
+.usuarios button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* ul li {
+  padding: 10px;
+  background: #eef;
+  margin: 5px 0;
+  border-radius: 6px;
+  font-size: 1rem;
+} */
+
+.servicios ul li {
+  background-color: #e6f7ff;
+  padding: 12px;
+  border-left: 4px solid #0077cc;
+  font-weight: 500;
+}
+
+button {
+  cursor: pointer;
+  background-color: #005a87;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+}
+
+button:hover {
+  background-color: #00456c;
+}

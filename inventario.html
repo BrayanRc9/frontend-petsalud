@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario Veterinaria</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="img/1PETSALUD-LOGO.png" alt="Logo" class="logo">
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="admin-dashboard.html">Panel Admin</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <main class="inventario-detallado">
+    <h2>Gestión de Inventario</h2>
+
+    <form id="form-nuevo-insumo">
+      <input type="text" id="nombreInsumo" placeholder="Nombre del insumo" required />
+      <input type="number" id="cantidadInsumo" placeholder="Cantidad" required />
+      <button type="submit">Agregar Insumo</button>
+    </form>
+    <button id="logout-btn">Cerrar Sesión</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-insumos">
+        <!-- Insumos dinámicos -->
+      </tbody>
+    </table>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="inventario.js"></script>
+  <script src="cerrar-sesion.js"></script>
+    <footer>
+        <p>&copy; 2025 Veterinaria Salud Animal. Todos los derechos reservados.</p>
+    </footer> 
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Panel de usuario - Plataforma veterinaria">
+  <title>Mi Panel - Usuario</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="img/1PETSALUD-LOGO.png" alt="Logo Veterinaria" class="logo"/>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="mis-mascotas.html">Mis Mascotas</a></li>
+        <li><a href="citas.html">Citas</a></li>
+        <li><button id="logout-btn">Cerrar Sesión</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="user-dashboard">
+    <section class="mascotas">
+      <h2>Mis Mascotas</h2>
+      <div id="mascotas-container">
+        <!-- Aquí se cargarán las mascotas dinámicamente -->
+      </div>
+    </section>
+
+    <section class="historial">
+      <h2>Historias Clínicas</h2>
+      <ul id="historias-list">
+        <!-- Lista de PDFs -->
+      </ul>
+    </section>
+
+    <section class="citas">
+      <h2>Agendar Cita</h2>
+      <form id="form-cita">
+        <input type="text" placeholder="Nombre de la mascota" required />
+        <input type="date" required />
+        <input type="time" required />
+        <button type="submit">Agendar</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/user-dashboard.js"></script>
+  
+</body>
+</html>

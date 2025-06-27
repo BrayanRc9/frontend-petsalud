@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Usuarios</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+  <header>
+    <nav class="navbar">
+      <img src="img/1PETSALUD-LOGO.png" alt="Logo Veterinaria" class="logo"/>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+<body>
+  <header><h2>Gestión de Usuarios</h2></header>
+  <main class="usuarios">
+    <form id="form-usuario">
+      <input type="text" placeholder="Nombre completo" required />
+      <input type="email" placeholder="Correo electrónico" required />
+      <select required id="usuario-rol">
+        <option value="">Seleccione Rol</option>
+        <option value="medico">Médico</option>
+        <option value="admin">Administrador</option>
+      </select>
+      <button type="submit">Crear Usuario</button>
+    </form>
+    <button id="logout-btn">Cerrar Sesión</button>
+    <ul id="lista-usuarios"></ul>
+  </main>
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="usuarios.js"></script>
+  <script src="cerrar-sesion.js"></script>
+
+  <footer>
+    <p>&copy; 2025 Veterinaria Salud Animal. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
+        

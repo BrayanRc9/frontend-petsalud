@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Panel administrativo - Plataforma veterinaria">
+  <title>Panel Administrativo</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="img/1PETSALUD-LOGO.png" alt="Logo Veterinaria" class="logo"/>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="usuarios.html">Usuarios</a></li>
+        <li><a href="inventario.html">Inventario</a></li>
+        <li><button id="logout-btn">Cerrar Sesión</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="admin-dashboard">
+    <section class="usuarios">
+      <h2>Crear Usuario Médico</h2>
+      <form id="form-usuario">
+        <input type="text" placeholder="Nombre completo" required />
+        <input type="email" placeholder="Correo electrónico" required />
+        <input type="password" placeholder="Contraseña" required />
+        <button type="submit">Crear Usuario</button>
+      </form>
+    </section>
+
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+  
+  <footer>
+    <p>&copy; 2025 Veterinaria Salud Animal. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+  <header>
+    <nav class="navbar">
+      <img src="img/1PETSALUD-LOGO.png" alt="Logo Veterinaria" class="logo"/>
+      <ul class="nav-links">
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+<body>
+  <main class="citas">
+    <h2>Gestión de Citas</h2>
+    <form id="form-cita">
+      <input type="text" placeholder="Nombre de la mascota" required />
+      <input type="date" required />
+      <input type="time" required />
+      <button type="submit">Agendar</button>
+    </form>
+    <ul id="lista-citas"></ul>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="citas.js"></script>
+  <script src="cerrar-sesion.js"></script>
+ 
+  <footer>
+    <p>&copy; 2025 Veterinaria Salud Animal. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
+        

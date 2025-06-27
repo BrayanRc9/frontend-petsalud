@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Panel del médico - Plataforma veterinaria">
+  <title>Panel Médico</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="img/1PETSALUD-LOGO.png" alt="Logo Veterinaria" class="logo"/>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="pacientes.html">Pacientes</a></li>
+        <li><a href="citas.html">Citas</a></li>
+        <li><button id="logout-btn">Cerrar Sesión</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="medico-dashboard">
+    <section class="registro-historia">
+      <h2>Registrar Historia Clínica</h2>
+      <form id="historia-form">
+ <input type="text" id="mascota-nombre" placeholder="Nombre de la mascota" required>
+      <input type="date" id="fecha" required>
+      <textarea id="sintomas" placeholder="Síntomas presentados" required></textarea>
+      <textarea id="diagnostico" placeholder="Diagnóstico médico" required></textarea>
+      <textarea id="tratamiento" placeholder="Tratamiento indicado" required></textarea>
+      <button type="submit">Generar y Guardar PDF</button>
+      </form>
+    </section>
+
+    <section>
+      <h3>Historias registradas</h3>
+      <ul id="lista-historias"></ul>
+    </section>
+  
+    <!-- <section class="citas-programadas">
+      <h2>Citas Programadas</h2>
+      <ul id="lista-citas"></ul>
+    </section> -->
+  </main>
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="medico.js"></script>
+  <script src="cerrar-sesion.js"></script>
+    <footer>
+        <p>&copy; 2025 Veterinaria Salud Animal. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
