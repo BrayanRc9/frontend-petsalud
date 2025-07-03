@@ -70,22 +70,23 @@
                         ➕ Agendar Cita
                     </button>
                 </div>
-                <div class="table-container">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Mascota</th>
-                                <th>Fecha y Hora</th>
-                                <th>Veterinario</th>
-                                <th>Motivo</th>
-                                <th>Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody id="appointmentsTable">
-                            
-                        </tbody>
-                    </table>
-                </div>
+               
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mascota</th>
+                            <th>Fecha y Hora</th>
+                            <th>Veterinario</th>
+                            <th>Motivo</th>
+                            <th>Estado</th>
+                            <th>Acciones</th> <!-- Nueva columna -->
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentsTable">
+                        <!-- Las citas se cargarán aquí dinámicamente -->
+                    </tbody>
+                </table>
             </div>
 
            
@@ -146,8 +147,44 @@
         </div>
     </div>
 
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content">
+        <div class="modal-header">
+        <h3>Agendar Nueva Cita</h3>
+        <button class="modal-close" onclick="closeModal('scheduleModal')">&times;</button>
+        </div>
+        <form id="formAgendarCita" class="modal-form">
+        <div class="form-group">
+            <label for="fechaCita">Fecha y hora</label>
+            <input type="datetime-local" id="fechaCita" required />
+        </div>
+        <div class="form-group">
+            <label for="motivoCita">Motivo de la consulta</label>
+            <input type="text" id="motivoCita" required />
+        </div>
+        <div class="form-group">
+            <label for="mascotaCita">Selecciona tu mascota</label>
+            <select id="mascotaCita" required>
+            <option value="">Cargando mascotas...</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="veterinarioCita">Selecciona un veterinario</label>
+            <select id="veterinarioCita" required>
+            <option value="">Cargando veterinarios...</option>
+            </select>
+        </div>
+        <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" onclick="closeModal('scheduleModal')">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Agendar</button>
+        </div>
+        </form>
+    </div>
+    </div>
+
     <script src="./assets/js/auth.js"></script>
-    <script src="./assets/js/client-dashboard.js"></script>
+    <script src="assets/js/client-dashboard.js"></script>
+    <script src="assets/js/agendar-cita.js"></script>
 
     
 <footer class="footer">

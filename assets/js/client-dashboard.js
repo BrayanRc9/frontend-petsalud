@@ -4,22 +4,22 @@ let pets = [];
 let appointments = [];
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Require authentication
+    
     const user = requireAuth(['client']);
     if (!user) return;
     
-    // Initialize dashboard
+    
     initializeClientDashboard();
     
-    // Load mock data
+    
     loadMockData();
     
-    // Show initial tab
+    
     showTab('pets');
 });
 
 function initializeClientDashboard() {
-    // Add event listeners
+    
     const addPetForm = document.getElementById('addPetForm');
     if (addPetForm) {
         addPetForm.addEventListener('submit', handleAddPet);
@@ -32,7 +32,7 @@ function initializeClientDashboard() {
 }
 
 function loadMockData() {
-    // Mock pets data
+    
     pets = [
         {
             id: '1',
@@ -72,7 +72,7 @@ function loadMockData() {
         }
     ];
     
-    // Mock appointments data
+    
     appointments = [
         {
             id: '1',
@@ -96,28 +96,28 @@ function loadMockData() {
         }
     ];
     
-    // Render initial data
+    
     renderPets();
     renderAppointments();
     renderMedicalRecords();
 }
 
 function showTab(tabName) {
-    // Hide all tabs
+    
     const tabs = document.querySelectorAll('.tab-content');
     tabs.forEach(tab => tab.classList.remove('active'));
     
-    // Remove active class from all tab buttons
+    
     const tabButtons = document.querySelectorAll('.tab-btn');
     tabButtons.forEach(btn => btn.classList.remove('active'));
     
-    // Show selected tab
+    
     const selectedTab = document.getElementById(tabName + 'Tab');
     if (selectedTab) {
         selectedTab.classList.add('active');
     }
     
-    // Add active class to selected tab button
+    
     const selectedButton = document.querySelector(`[onclick="showTab('${tabName}')"]`);
     if (selectedButton) {
         selectedButton.classList.add('active');
@@ -169,6 +169,21 @@ function renderAppointments() {
                 <span class="status-badge status-${appointment.status}">
                     ${getStatusText(appointment.status)}
                 </span>
+            </td>
+            <td>
+                <div class="appointment-actions">
+                    <button class="btn btn-sm btn-info" onclick="showAppointmentDetails('${appointment.id}')" title="Ver detalles">
+                        👁️
+                    </button>
+                    ${appointment.status === 'scheduled' ? `
+                        <button class="btn btn-sm btn-warning" onclick="rescheduleAppointment('${appointment.id}')" title="Reprogramar">
+                            📅
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="cancelAppointment('${appointment.id}')" title="Cancelar">
+                            ❌
+                        </button>
+                    ` : ''}
+                </div>
             </td>
         </tr>
     `).join('');
@@ -241,11 +256,11 @@ function generatePetPDF(petId) {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
         
-        // Header
+        
         doc.setFontSize(20);
         doc.text('PetSalud - Historia Clínica', 20, 20);
         
-        // Pet info
+        
         doc.setFontSize(16);
         doc.text(`Mascota: ${pet.name}`, 20, 40);
         doc.setFontSize(12);
@@ -254,7 +269,7 @@ function generatePetPDF(petId) {
         doc.text(`Edad: ${pet.age} años`, 20, 70);
         doc.text(`Propietario: ${user?.name || 'Cliente'}`, 20, 80);
         
-        // Medical history
+       
         doc.setFontSize(14);
         doc.text('Historial Médico:', 20, 100);
         
@@ -301,7 +316,7 @@ function handleAddPet(e) {
         species: formData.get('petSpecies'),
         breed: formData.get('petBreed'),
         age: parseInt(formData.get('petAge')),
-        photo: null, // In a real app, you'd handle file upload here
+        photo: null,
         medicalHistory: []
     };
     
@@ -320,7 +335,7 @@ function handleSearchRecords() {
         pet.id.includes(searchTerm)
     );
     
-    // Re-render with filtered results
+    
     const recordsGrid = document.getElementById('recordsGrid');
     if (!recordsGrid) return;
     
@@ -361,10 +376,70 @@ function handleSearchRecords() {
     `).join('');
 }
 
-function searchRecords() {
-    handleSearchRecords();
+// function searchRecords() {
+//     handleSearchRecords();
+// }
+
+// function showScheduleModal() {
+//     alert('Funcionalidad de agendar cita en desarrollo');
+// }
+
+// Funciones de utilidad para notificaciones
+function showNotification(message, type = 'info', duration = 3000) {
+    // Crear elemento de notificación
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    
+    // Agregar al DOM
+    document.body.appendChild(notification);
+    
+    // Mostrar notificación
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Ocultar y remover notificación
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, duration);
 }
 
-function showScheduleModal() {
-    alert('Funcionalidad de agendar cita en desarrollo');
+// Función para confirmar acciones
+function confirmAction(message, callback) {
+    if (confirm(message)) {
+        callback();
+    }
+}
+
+// Función para formatear fechas
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+}
+
+// Función para formatear tiempo
+function formatTime(timeString) {
+    const time = new Date(`1970-01-01T${timeString}:00`);
+    return time.toLocaleTimeString('es-ES', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+}
+
+// Función para obtener el usuario actual (si existe en auth.js)
+function getCurrentUser() {
+    // Esta función debería estar en auth.js, pero la agregamos aquí como fallback
+    const userData = localStorage.getItem('currentUser');
+    return userData ? JSON.parse(userData) : { name: 'Cliente', email: 'cliente@example.com' };
 }

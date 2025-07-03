@@ -1141,3 +1141,257 @@ textarea.form-input {
 
 .shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
 .shadow-lg { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); }
+
+/* Estilos adicionales para la funcionalidad de agendar citas */
+
+/* Mensaje de disponibilidad */
+.availability-message {
+    padding: 8px 12px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.availability-message.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.availability-message.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.availability-message.info {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border: 1px solid #93c5fd;
+}
+
+/* Acciones de citas */
+.appointment-actions {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.appointment-actions .btn {
+    padding: 4px 8px;
+    min-width: 32px;
+    font-size: 12px;
+}
+
+.btn-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.btn-info {
+    background-color: #0891b2;
+    color: white;
+    border: none;
+}
+
+.btn-info:hover {
+    background-color: #0e7490;
+}
+
+.btn-warning {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #d97706;
+}
+
+/* Mejorar tabla de citas */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.data-table th {
+    background-color: #f8fafc;
+    color: #374151;
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.data-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+}
+
+.data-table tr:hover {
+    background-color: #f9fafb;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status badges mejorados */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-scheduled {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.status-completed {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-cancelled {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Formulario de agendar cita mejorado */
+.modal-form .form-group {
+    margin-bottom: 20px;
+}
+
+.modal-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.modal-form input,
+.modal-form select,
+.modal-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.modal-form input:focus,
+.modal-form select:focus,
+.modal-form textarea:focus {
+    outline: none;
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+}
+
+/* Horarios disponibles */
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.time-slot {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.time-slot:hover {
+    background-color: #f3f4f6;
+}
+
+.time-slot.selected {
+    background-color: #14b8a6;
+    color: white;
+    border-color: #14b8a6;
+}
+
+.time-slot.unavailable {
+    background-color: #f9fafb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* Notificaciones */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    z-index: 1000;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    max-width: 300px;
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.notification.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.notification.info {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border: 1px solid #93c5fd;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .appointment-actions {
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .data-table {
+        font-size: 14px;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 8px;
+    }
+    
+    .time-slots {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    }
+}
