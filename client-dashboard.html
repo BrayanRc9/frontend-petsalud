@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Cliente - PetSalud</title>
+    <link rel="icon" type="image/png" href="./assets/images/1PETSALUD-LOGO.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">
+                    <img src="./assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="logo-img">
+                </a>
+                
+                <div class="nav-links">
+                    <span class="user-greeting">Hola, <span id="userName">Cliente</span></span>
+                    <button onclick="logout()" class="btn btn-danger btn-sm">
+                        🚪 Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+   
+    <div class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Bienvenido</h1>
+                <p class="dashboard-subtitle">Gestiona la salud de tus mascotas</p>
+            </div>
+
+      
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('pets')">
+                    ❤️ Mis Mascotas
+                </button>
+                <button class="tab-btn" onclick="showTab('appointments')">
+                    📅 Citas
+                </button>
+                <button class="tab-btn" onclick="showTab('records')">
+                    📋 Historias Clínicas
+                </button>
+            </div>
+
+            
+            <div id="petsTab" class="tab-content active">
+                <div class="tab-header">
+                    <h2>Mis Mascotas</h2>
+                    <button class="btn btn-primary" onclick="showAddPetModal()">
+                        ➕ Agregar Mascota
+                    </button>
+                </div>
+                <div id="petsGrid" class="pets-grid">
+                    
+                </div>
+            </div>
+
+            
+            <div id="appointmentsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Mis Citas</h2>
+                    <button class="btn btn-primary" onclick="showScheduleModal()">
+                        ➕ Agendar Cita
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Mascota</th>
+                                <th>Fecha y Hora</th>
+                                <th>Veterinario</th>
+                                <th>Motivo</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentsTable">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+           
+            <div id="recordsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Historias Clínicas</h2>
+                    <div class="search-container">
+                        <input type="text" id="searchRecords" placeholder="Buscar por nombre o ID..." class="search-input">
+                        <button class="btn btn-secondary" onclick="searchRecords()">🔍 Buscar</button>
+                    </div>
+                </div>
+                <div id="recordsGrid" class="records-grid">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <div id="addPetModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Agregar Nueva Mascota</h3>
+                <button class="modal-close" onclick="closeModal('addPetModal')">&times;</button>
+            </div>
+            <form id="addPetForm" class="modal-form">
+                <div class="form-group">
+                    <label for="petName">Nombre de la Mascota</label>
+                    <input type="text" id="petName" name="petName" required>
+                </div>
+                <div class="form-group">
+                    <label for="petSpecies">Especie</label>
+                    <select id="petSpecies" name="petSpecies" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Ave">Ave</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="petBreed">Raza</label>
+                    <input type="text" id="petBreed" name="petBreed" required>
+                </div>
+                <div class="form-group">
+                    <label for="petAge">Edad (años)</label>
+                    <input type="number" id="petAge" name="petAge" min="0" max="30" required>
+                </div>
+                <div class="form-group">
+                    <label for="petPhoto">Foto de la Mascota</label>
+                    <input type="file" id="petPhoto" name="petPhoto" accept="image/*">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addPetModal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Agregar Mascota</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./assets/js/auth.js"></script>
+    <script src="./assets/js/client-dashboard.js"></script>
+
+    
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="footer-logo">
+                    <p class="footer-description">
+                        Únete a miles de familias que ya confían en PetSalud para el cuidado de sus mascotas.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>📧 brc910tec@gmail.com</li>
+                        <li>📞 +57 3144734128</li>
+                        <li>📍 Cali, Colombia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PetSalud. Todos los derechos reservados. <strong>Brayan Ruano</strong></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

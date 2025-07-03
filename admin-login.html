@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - PetSalud</title>
+    <link rel="icon" type="image/png" href="/assets/images/1PETSALUD-LOGO.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">
+                    <img src="/assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="logo-img">
+                </a>
+                
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="client-login.html" class="nav-link">
+                        <span class="nav-icon">👤</span>
+                        Clientes
+                    </a>
+                    <a href="vet-login.html" class="nav-link">
+                        <span class="nav-icon">🩺</span>
+                        Veterinarios
+                    </a>
+                    <a href="admin-login.html" class="nav-link active">
+                        <span class="nav-icon">⚙️</span>
+                        Administración
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+  
+    <section class="login-section">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-header">
+                    <img src="/assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="login-logo">
+                    <h2 class="login-title">Panel de Administración</h2>
+                    <p class="login-subtitle">Acceso restringido para administradores</p>
+                </div>
+
+                <div class="login-form-container">
+                    <form id="adminLoginForm" class="login-form">
+                        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Correo de Administrador</label>
+                            <div class="input-group">
+                                <span class="input-icon">⚙️</span>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="admin@petsalud.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">Contraseña de Administrador</label>
+                            <div class="input-group">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('password')">👁️</button>
+                            </div>
+                        </div>
+
+                        <div class="demo-credentials">
+                            <p><strong>Credenciales de prueba:</strong><br>
+                            Email: admin@petsalud.com<br>
+                            Contraseña: 123456</p>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+                            Acceder al Panel
+                        </button>
+                    </form>
+
+                    <div class="login-footer">
+                        <p><a href="index.html">← Volver al inicio</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./assets/js/auth.js"></script>
+    <script src="./assets/js/admin-login.js"></script>
+
+    
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="footer-logo">
+                    <p class="footer-description">
+                        Únete a miles de familias que ya confían en PetSalud para el cuidado de sus mascotas.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>📧 brc910tec@gmail.com</li>
+                        <li>📞 +57 3144734128</li>
+                        <li>📍 Cali, Colombia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PetSalud. Todos los derechos reservados. <strong>Brayan Ruano</strong></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

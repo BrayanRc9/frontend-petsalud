@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Veterinario - PetSalud</title>
+    <link rel="icon" type="image/png" href="/assets/images/1PETSALUD-LOGO.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">
+                    <img src="/assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="logo-img">
+                </a>
+                
+                <div class="nav-links">
+                    <span class="user-greeting">Hola, <span id="userName">Doctor</span></span>
+                    <button onclick="logout()" class="btn btn-danger btn-sm">
+                        🚪 Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Panel Veterinario - <span id="userNameTitle">Doctor</span></h1>
+                <p class="dashboard-subtitle">Gestiona pacientes y citas médicas</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon bg-blue">📅</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Citas Hoy</p>
+                        <p class="stat-value" id="todayAppointments">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-green">👥</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Pacientes</p>
+                        <p class="stat-value" id="totalPatients">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-yellow">📋</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Historias</p>
+                        <p class="stat-value" id="totalRecords">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon bg-purple">⏳</div>
+                    <div class="stat-content">
+                        <p class="stat-label">En Progreso</p>
+                        <p class="stat-value" id="inProgressAppointments">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('appointments')">
+                    📅 Citas del Día
+                </button>
+                <button class="tab-btn" onclick="showTab('patients')">
+                    👥 Pacientes
+                </button>
+                <button class="tab-btn" onclick="showTab('records')">
+                    📋 Historias Clínicas
+                </button>
+            </div>
+
+            <div id="appointmentsTab" class="tab-content active">
+                <div class="tab-header">
+                    <h2>Citas de Hoy</h2>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Paciente</th>
+                                <th>Propietario</th>
+                                <th>Motivo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentsTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="patientsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Pacientes</h2>
+                    <div class="tab-actions">
+                        <input type="text" id="searchPatients" placeholder="Buscar paciente..." class="search-input">
+                        <button class="btn btn-primary" onclick="showAddPatientModal()">
+                            ➕ Nuevo Paciente
+                        </button>
+                    </div>
+                </div>
+                <div id="patientsGrid" class="patients-grid">
+                    
+                </div>
+            </div>
+
+           
+            <div id="recordsTab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Historias Clínicas</h2>
+                    <button class="btn btn-primary" onclick="showAddRecordModal()">
+                        ➕ Nueva Historia
+                    </button>
+                </div>
+                <div class="medical-record-form">
+                    <h3>Crear Nueva Historia Clínica</h3>
+                    <form id="medicalRecordForm" class="form-grid">
+                        <div class="form-group">
+                            <label for="recordPatient">Seleccionar Paciente</label>
+                            <select id="recordPatient" name="recordPatient" required>
+                                <option value="">Seleccionar...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="recordDate">Fecha</label>
+                            <input type="date" id="recordDate" name="recordDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recordDiagnosis">Diagnóstico</label>
+                            <input type="text" id="recordDiagnosis" name="recordDiagnosis" placeholder="Diagnóstico principal..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recordTreatment">Tratamiento</label>
+                            <input type="text" id="recordTreatment" name="recordTreatment" placeholder="Tratamiento prescrito..." required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="recordNotes">Notas Adicionales</label>
+                            <textarea id="recordNotes" name="recordNotes" rows="4" placeholder="Observaciones, recomendaciones, seguimiento..."></textarea>
+                        </div>
+                        <div class="form-actions full-width">
+                            <button type="submit" class="btn btn-primary">
+                                💾 Guardar Historia
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/auth.js"></script>
+    <script src="/assets/js/vet-dashboard.js"></script>
+
+    
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="footer-logo">
+                    <p class="footer-description">
+                        Únete a miles de familias que ya confían en PetSalud para el cuidado de sus mascotas.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>📧 brc910tec@gmail.com</li>
+                        <li>📞 +57 3144734128</li>
+                        <li>📍 Cali, Colombia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PetSalud. Todos los derechos reservados. <strong>Brayan Ruano</strong></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
