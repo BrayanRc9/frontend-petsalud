@@ -42,3 +42,27 @@ async function handleVetLogin(e) {
         loginBtn.disabled = false;
     }
 }
+
+function showNotification(message, type = 'info') {
+    let color = 'blue';
+    if (type === 'success') color = 'green';
+    else if (type === 'error') color = 'red';
+
+    const div = document.createElement('div');
+    div.textContent = message;
+    div.style.position = 'fixed';
+    div.style.top = '20px';
+    div.style.left = '50%';
+    div.style.transform = 'translateX(-50%)';
+    div.style.backgroundColor = color;
+    div.style.color = 'white';
+    div.style.padding = '10px 20px';
+    div.style.borderRadius = '5px';
+    div.style.boxShadow = '0 0 10px rgba(0,0,0,0.2)';
+    div.style.zIndex = '1000';
+    document.body.appendChild(div);
+
+    setTimeout(() => {
+        div.remove();
+    }, 3000);
+}

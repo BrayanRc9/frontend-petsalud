@@ -1,4 +1,16 @@
-// Authentication utilities
+function setCurrentUser(user) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+}
+
+function getCurrentUser() {
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user) : null;
+}
+
+function clearCurrentUser() {
+    localStorage.removeItem('currentUser');
+}
+
 const AUTH_CONFIG = {
     users: {
         'client@petsalud.com': {
@@ -26,13 +38,13 @@ const AUTH_CONFIG = {
 };
 
 async function authenticateUser(email, password, expectedRole) {
-    // Simulate API delay
+    
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     const user = AUTH_CONFIG.users[email];
     
     if (user && user.password === password && user.role === expectedRole) {
-        // Remove password from user object before storing
+       
         const { password: _, ...userWithoutPassword } = user;
         setCurrentUser(userWithoutPassword);
         return { success: true, user: userWithoutPassword };
@@ -90,11 +102,11 @@ function hideError(elementId = 'errorMessage') {
     }
 }
 
-// Initialize auth on page load
+
 document.addEventListener('DOMContentLoaded', function() {
     const user = getCurrentUser();
     
-    // Update user name in navigation if present
+   
     const userNameElements = document.querySelectorAll('#userName, #userNameTitle');
     if (user && userNameElements.length > 0) {
         userNameElements.forEach(element => {
