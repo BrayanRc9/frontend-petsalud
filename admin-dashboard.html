@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - PetSalud</title>
-    <link rel="icon" type="image/png" href="./assets/images/1PETSALUD-LOGO.png">
+    <link rel="icon" type="image/png" href="assets/images/1PETSALUD-LOGO.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     
@@ -14,7 +14,7 @@
         <div class="nav-container">
             <div class="nav-content">
                 <a href="index.html" class="nav-logo">
-                    <img src="/assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="logo-img">
+                    <img src="assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="logo-img">
                 </a>
                 
                 <div class="nav-links">
@@ -194,9 +194,58 @@
             </form>
         </div>
     </div>
+    <div id="notificationContainer" style="position: fixed; top: 20px; right: 20px; z-index: 2000;"></div>
+    <div id="addStaffModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Agregar Personal</h3>
+                <button class="modal-close" onclick="closeModal('addStaffModal')">&times;</button>
+            </div>
+            <form id="addStaffForm" class="modal-form">
+                <div class="form-group">
+                    <label for="staffName">Nombre Completo</label>
+                    <input type="text" id="staffName" name="staffName" required>
+                </div>
+                <div class="form-group">
+                    <label for="staffRole">Rol</label>
+                    <select id="staffRole" name="staffRole" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="Veterinario Senior">Veterinario Senior</option>
+                        <option value="Veterinario">Veterinario</option>
+                        <option value="Asistente Veterinario">Asistente Veterinario</option>
+                        <option value="Recepcionista">Recepcionista</option>
+                        <option value="Técnico">Técnico</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="staffEmail">Email</label>
+                    <input type="email" id="staffEmail" name="staffEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="staffPhone">Teléfono</label>
+                    <input type="tel" id="staffPhone" name="staffPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="staffStatus">Estado</label>
+                    <select id="staffStatus" name="staffStatus" required>
+                        <option value="active">Activo</option>
+                        <option value="inactive">Inactivo</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addStaffModal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Agregar Personal</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <script src="/assets/js/auth.js"></script>
-    <script src="/assets/js/admin-dashboard.js"></script>
+    <div id="notificationContainer" style="position: fixed; top: 20px; right: 20px; z-index: 2000;"></div>
+    
+
+
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/admin-dashboard.js"></script>
 
     <footer class="footer">
         <div class="container">

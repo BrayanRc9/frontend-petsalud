@@ -6,7 +6,7 @@
     <title>Dashboard Veterinario - PetSalud</title>
     <link rel="icon" type="image/png" href="/assets/images/1PETSALUD-LOGO.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -14,7 +14,7 @@
         <div class="nav-container">
             <div class="nav-content">
                 <a href="index.html" class="nav-logo">
-                    <img src="/assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="logo-img">
+                    <img src="assets/images/1PETSALUD-LOGO.png" alt="PetSalud" class="logo-img">
                 </a>
                 
                 <div class="nav-links">
@@ -159,8 +159,105 @@
         </div>
     </div>
 
-    <script src="/assets/js/auth.js"></script>
-    <script src="/assets/js/vet-dashboard.js"></script>
+    <!-- Modal para Nuevo Paciente -->
+<div id="addPatientModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>🐾 Nuevo Paciente</h2>
+            <button class="close-btn" onclick="closeAddPatientModal()">&times;</button>
+        </div>
+        
+        <form id="addPatientForm" class="modal-form">
+            <div class="form-section">
+                <h3>📋 Información del Paciente</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="patientName">Nombre del Paciente *</label>
+                        <input type="text" id="patientName" name="patientName" 
+                               placeholder="Ej: Max, Luna, Rex..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="species">Especie *</label>
+                        <select id="species" name="species" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Conejo">Conejo</option>
+                            <option value="Hámster">Hámster</option>
+                            <option value="Ave">Ave</option>
+                            <option value="Reptil">Reptil</option>
+                            <option value="Pez">Pez</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="breed">Raza *</label>
+                        <input type="text" id="breed" name="breed" 
+                               placeholder="Ej: Golden Retriever, Siamés..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Edad (años) *</label>
+                        <input type="number" id="age" name="age" min="0" max="30" 
+                               placeholder="Ej: 3" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>👤 Información del Propietario</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ownerName">Nombre Completo *</label>
+                        <input type="text" id="ownerName" name="ownerName" 
+                               placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ownerEmail">Email *</label>
+                        <input type="email" id="ownerEmail" name="ownerEmail" 
+                               placeholder="Ej: juan@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ownerPhone">Teléfono *</label>
+                        <input type="tel" id="ownerPhone" name="ownerPhone" 
+                               placeholder="Ej: +57 300 123 4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergencyContact">Contacto de Emergencia</label>
+                        <input type="tel" id="emergencyContact" name="emergencyContact" 
+                               placeholder="Opcional">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>📝 Información Adicional</h3>
+                <div class="form-group">
+                    <label for="notes">Notas Generales</label>
+                    <textarea id="notes" name="notes" rows="3" 
+                              placeholder="Información adicional sobre el paciente, alergias, comportamiento, etc."></textarea>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeAddPatientModal()">
+                    ❌ Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    💾 Guardar Paciente
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/vet-dashboard.js"></script>
 
     
 <footer class="footer">
